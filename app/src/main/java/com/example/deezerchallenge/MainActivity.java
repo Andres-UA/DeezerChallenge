@@ -44,6 +44,31 @@ public class MainActivity extends AppCompatActivity {
         rvPlaylist.setAdapter(playlistAdapter);
         rvPlaylist.setHasFixedSize(true);
 
+        new Thread(() -> {
+            new ServiceManager.GETSearchPlaylist("queen", new ServiceManager.GETSearchPlaylist.OnResponseListener() {
+                @Override
+                public void onResponse(String response) {
+                    runOnUiThread(() -> {
+
+                        JSONObject json = null;    // create JSON obj from string
+                        try {
+                            json = new JSONObject(response);
+                            JSONArray data = json.getJSONArray("data");
+
+                            String playlist_json = data.toString();
+
+                            ArrayList<SearchPlaylist> playlist = new Gson().fromJson(playlist_json, new TypeToken<List<SearchPlaylist>>() {
+                            }.getType());
+
+                            playlistAdapter.setData(playlist);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            });
+        }).start();
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

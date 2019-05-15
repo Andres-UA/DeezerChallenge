@@ -1,8 +1,12 @@
 package com.example.deezerchallenge;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +32,8 @@ public class TrackActivity extends AppCompatActivity {
     private TextView etAlbum;
     private TextView etDuration;
 
+    private Button btnPlay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,8 @@ public class TrackActivity extends AppCompatActivity {
         etAuthor = findViewById(R.id.track_author);
         etAlbum = findViewById(R.id.track_album);
         etDuration = findViewById(R.id.track_duration);
+
+        btnPlay = findViewById(R.id.btn_play);
 
         if (getIntent().hasExtra("id")) {
             String id = getIntent().getStringExtra("id");
@@ -63,6 +71,20 @@ public class TrackActivity extends AppCompatActivity {
                                 etAuthor.setText(track.getArtist().getName());
                                 etDuration.setText(track.getDuration() + "");
 
+                                btnPlay.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = getPackageManager().getLaunchIntentForPackage("deezer.android.app");
+                                        if (intent != null) {
+                                            Intent app = new Intent(Intent.ACTION_VIEW, Uri.parse("deezer://www.deezer.com/track/" + track.getId()));
+                                            startActivity(app);
+                                        } else {
+                                            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.deezer.com/track/" + track.getId()));
+                                            startActivity(browser);
+                                        }
+                                    }
+                                });
+
                                 Glide.with(TrackActivity.this).load(track.getAlbum().getCover_medium()).into(ivCover);
 
                             } catch (JSONException e) {
@@ -73,6 +95,7 @@ public class TrackActivity extends AppCompatActivity {
                 });
             }).start();
         }
+
 
     }
 }

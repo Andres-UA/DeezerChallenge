@@ -5,68 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    android:orientation="vertical"
     tools:context=".PlayListActivity">
 
-    <ImageView
-        android:id="@+id/track_image"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="30dp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/track_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Titulo"
-        android:textAlignment="center"
-        android:textSize="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/track_author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:text="Artista"
-        android:textAlignment="center"
-        android:textSize="12dp" />
+            <ImageView
+                android:id="@+id/track_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp" />
 
-    <TextView
-        android:id="@+id/track_album"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Album"
-        android:textAlignment="center"
-        android:textSize="12dp" />
+            <TextView
+                android:id="@+id/track_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Titulo"
+                android:textAlignment="center"
+                android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/track_duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Duracion"
-        android:textAlignment="center"
-        android:textSize="18dp" />
+            <TextView
+                android:id="@+id/track_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Artista"
+                android:textAlignment="center"
+                android:textSize="12dp" />
 
-    <Button
-        android:id="@+id/btn_play"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="70dp"
-        android:text="Escuchar" />
+            <TextView
+                android:id="@+id/track_album"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Album"
+                android:textAlignment="center"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/track_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Duracion"
+                android:textAlignment="center"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/btn_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="70dp"
+                android:text="Escuchar"
+                android:layout_marginBottom="30dp"/>
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>
